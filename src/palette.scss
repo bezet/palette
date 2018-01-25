@@ -1,0 +1,56 @@
+$color1: #000 !default;
+$color2: #222 !default;
+$color3: #444 !default;
+$color4: #666 !default;
+$color5: #888 !default;
+
+.color-palette {
+  display: block;
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  background: #31353D;
+  transition: left .5s ease;
+}
+
+.color-palette--hoverable {
+  left: -250px;
+
+  &:hover {
+    left: 0;
+  }
+}
+
+.color-palette__color {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+  $colors: (1: $color1, 2: $color2, 3: $color3, 4: $color4, 5: $color5);
+
+  @each $number, $color in $colors {
+    &:nth-child(#{$number}) {
+      background-color: $color;
+
+      &:after {
+        content: "#{$color}";
+        color: invert($color);
+      }
+    }
+  }
+}
+
+.color-palette__icon {
+  float: right;
+  width: 50px;
+  height: 50px;
+
+  path {
+    fill: #EEEFF7;
+  }
+}
