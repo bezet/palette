@@ -18,14 +18,14 @@ npm i @bezet/palette
 Either
 ```
 import Palette from '@bezet/palette';
-const myPalette = new Palette('a');
+const myPalette = new Palette();
 ```
 
 or
 ```
 <script type="text/javascript" src="dist/palette.js"></script>
 <script type="text/javascript">
-    var myPalette = new Palette('a');
+    var myPalette = new Palette();
 </script>
 ```
 
