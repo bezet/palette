@@ -29,7 +29,7 @@ html {
 body {
   position: relative;
   width: 100%;
-  background: $color3;
+  background: lighten($color3, 25%);
 }
 
 .wrapper {
