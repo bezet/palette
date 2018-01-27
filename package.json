@@ -52,5 +52,10 @@
     "design"
   ],
   "repository": "https://github.com/bezet/palette",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "clipboard": "^1.7.1",
+    "rgb-hex": "^2.1.0"
+  }
 }
