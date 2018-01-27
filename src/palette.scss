@@ -1,56 +1,107 @@
-$color1: #000 !default;
-$color2: #222 !default;
-$color3: #444 !default;
-$color4: #666 !default;
-$color5: #888 !default;
-
 .color-palette {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 999;
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 0;
+  max-width: calc(100% - 46px);
+  padding: 0 2px;
   margin: 0;
-  background: #31353D;
-  transition: left .5s ease;
+  transform: translate3d(-100%,0,0);
+  transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.color-palette--hoverable {
-  left: -250px;
+.color-palette.js-active {
+  transform: translate3d(0,0,0);
+}
 
-  &:hover {
-    left: 0;
+.color-palette__btn,
+.color-palette__color {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+.color-palette__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 100%;
+  height: 40px;
+  width: 40px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: #31353D;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background: #eee;
+    transform-origin: center;
+    transform: translate3d(-50%,-50%,0) rotate(0);
+    opacity: 0;
+    transition: transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  svg path {
+    fill: #eee;
+  }
+}
+
+.color-palette.js-active .color-palette__btn {
+  svg {
+    opacity: 0;
+  }
+
+  &:before {
+    opacity: 1;
+    transform: translate3d(-50%,-50%,0) rotate(45deg);
+  }
+
+  &:after {
+    opacity: 1;
+    transform: translate3d(-50%,-50%,0) rotate(-45deg);
   }
 }
 
 .color-palette__color {
-  display: block;
-  float: left;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: 4px 2px;
+  transform: scale(0);
+  transition: transform 750ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  $colors: (1: $color1, 2: $color2, 3: $color3, 4: $color4, 5: $color5);
-
-  @each $number, $color in $colors {
-    &:nth-child(#{$number}) {
-      background-color: $color;
-
-      &:after {
-        content: "#{$color}";
-        color: invert($color);
-      }
-    }
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #31353D;
+    color: #eee;
   }
 }
 
-.color-palette__icon {
-  float: right;
-  width: 50px;
-  height: 50px;
-
-  path {
-    fill: #EEEFF7;
-  }
+.color-palette.js-active .color-palette__color {
+  transform: scale(1);
 }
+
+// .color-palette.js-active .color-palette__color:focus {
+//   transform: scale(1.25);
+// }
