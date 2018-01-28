@@ -18,14 +18,26 @@ npm i @bezet/palette
 Either
 ```
 import Palette from '@bezet/palette';
-const myPalette = new Palette();
+const myPalette = new Palette({ colors: [
+  'rgba(117, 79, 68, 1)',
+  'rgba(236, 115, 87, 1)',
+  'rgba(225, 206, 122, 1)',
+  'rgba(253, 214, 146, 1)',
+  'rgba(251, 255, 185, 1)',
+] });
 ```
 
 or
 ```
 <script type="text/javascript" src="dist/palette.js"></script>
 <script type="text/javascript">
-    var myPalette = new Palette();
+  var myPalette = new Palette({ colors: [
+    'rgba(117, 79, 68, 1)',
+    'rgba(236, 115, 87, 1)',
+    'rgba(225, 206, 122, 1)',
+    'rgba(253, 214, 146, 1)',
+    'rgba(251, 255, 185, 1)',
+  ] });
 </script>
 ```
 
